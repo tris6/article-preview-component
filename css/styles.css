@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --color-dark-gray-blue: hsl(217, 19%, 35%);
+    --color-desat-dark-blue: hsl(214, 17%, 51%);
+    --color-gray-blue: hsl(212, 23%, 69%);
+    --color-gray-blue-light: hsl(210, 46%, 95%);
+
+    --border-radius: 10px;
+}
+
+/* GLOBAL LAYOUT */
+
+* { box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-gray-blue-light);
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* GLOBAL TYPE */
+body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+
+    color: var(--color-desat-dark-blue);
+    font-size: 13px;
+}
+
+h1, p { margin: 0; }
+
+p {
+    max-inline-size: 45ch;
+    line-height: 1.5;
+}
+
+h1 {
+    color: var(--color-dark-gray-blue);
+    font-size: 20px;
+}
+
+/* CARD LAYOUT */
+.card {
+    display: flex;
+
+    height: 280px;
+
+    background-color: white;
+    border-radius: var(--border-radius);
+}
+
+.card__image {
+    display: flex;
+    overflow: hidden;
+    width: 285px;
+}
+
+.card__image img {
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.card__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 445px;
+    padding: 15px 35px;
+}
+
+.card__footer, .card__caption {
+    display: flex;
+    height: 40px;
+}
+
+.card__footer {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__caption img {
+    height: 100%;
+    border-radius: 100%;
+    margin-right: 16px;
+}
+
+.card__caption__name {
+    color: var(--color-dark-gray-blue);
+    font-weight: 700;
+}
+
+.card__caption__date {
+    color: var(--color-gray-blue);
+}
+
+.card__share-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 18px;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+
+    background-color: var(--color-gray-blue-light);
+}
+
+/* CARD INTERACTIVITY */
+.display-prop { display: flex !important; }
+
+.cursor { cursor: default; }
+.pointer { cursor: pointer; }
+
+.card__text { position: relative; }
+
+.card__share-icon-container:hover { background-color: var(--color-desat-dark-blue); }
+.card__share-icon-container:hover .card__share-icon { fill: white; }
+
+#card__share-bar-square, #card__share-bar-arrow {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: var(--color-dark-gray-blue);
+}
+
+#card__share-bar-square {
+    bottom: 94px;
+    left: 251px;
+
+    width: 250px;
+    height: 55px;
+    border-radius: 10px;
+
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 25px;
+}
+
+#card__share-bar-arrow {
+    bottom: 82px;
+    left: 365px;
+
+    width: 23px;
+    height: 12px;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+#card__share-bar-square p {
+    color: var(--color-gray-blue);
+    font-size: 14px;
+    letter-spacing: 0.25rem;
+}
+
+svg:hover path {
+    fill: var(--color-desat-dark-blue);
+}
+
+/* MOBILE BREAK POINT */
+@media screen and (max-width: 870px) {
+    body {
+        height: fit-content;
+        align-items: start;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .card {
+        flex-direction: column;
+        width: 330px;
+        height: 515px;
+    }
+
+    .card__image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .card__image img {
+        width: 100%;
+        object-position: 50% 32%;
+        border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+    }
+
+    .card__text {
+        width: 330px;
+        height: 312px;
+        padding: 20px 33px;
+    }
+
+    .card__footer { margin-top: 42px; }
+
+    h1 {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 15px;
+    }
+    .card__text > p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-top: 15px;
+    }
+
+    .card__share-icon-container {
+        margin: 0;
+    }
+
+    /* MOBILE CARD INTERACTIVITY */
+
+    #card__share-bar-arrow { background-color: transparent; }
+    
+    .card__text { position: relative; }
+
+    .card__share-icon-container {
+        position: absolute;
+        right: 35px;
+        z-index: 3;
+    }
+
+    #card__share-bar-square {
+        width: 330px;
+        height: 70px;
+
+        bottom: -3px;
+        left: 0px;
+
+        padding-right: 100px;
+
+        border-radius: 0px 0px var(--border-radius)var(--border-radius);
+    }
+    
+}
